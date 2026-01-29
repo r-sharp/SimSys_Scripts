@@ -114,6 +114,22 @@ class StyleChecker(ABC):
     check_functions: Dict[str, Callable]
     files_to_check: List[Path]
 
+    def __init__(
+        self,
+        name: str,
+        file_extensions: Set[str],
+        check_functions: Dict[str, Callable],
+        changed_files: List[Path] = [],
+    ):
+        self.name = name
+        self.file_extensions = file_extensions or set()
+        self.check_functions = check_functions or {}
+        self.files_to_check = (
+            self.filter_files(changed_files, self.file_extensions)
+            if changed_files
+            else []
+        )
+
     @abstractmethod
     def get_name(self) -> str:
         """Return the name of this checker."""
