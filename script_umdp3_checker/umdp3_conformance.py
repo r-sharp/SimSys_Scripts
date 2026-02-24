@@ -547,10 +547,10 @@ def detangle_file_types(file_types: Set[str]) -> Set[str]:
         # sync with what's allowable...
         if file_types.difference(the_whole_world):
             raise ValueError(
-                "Invalid file types specified: " +
-                f"{file_types.difference(the_whole_world)}" +
-                f" in group \"{group}\""
-                )
+                "Invalid file types specified: "
+                + f"{file_types.difference(the_whole_world)}"
+                + f' in group "{group}"'
+            )
     return file_types
 
 
@@ -561,8 +561,7 @@ def create_style_checkers(
     dispatch_tables = CheckerDispatchTables()
     checkers = []
     if "Fortran" in file_types:
-        file_extensions = {".f", ".for", ".f90", ".f95",
-                           ".f03", ".f08", ".F90"}
+        file_extensions = {".f", ".for", ".f90", ".f95", ".f03", ".f08", ".F90"}
         """
         TODO : I /think/ the old version also checked '.h' files as Fortran.
         Not sure if that is still needed."""
