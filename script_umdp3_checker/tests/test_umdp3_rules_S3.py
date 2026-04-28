@@ -239,14 +239,14 @@ def test_r3_2_1_check_crown_copyright(
     modified_fortran_lines = modify_fortran_lines(example_fortran_lines, changes_list)
     result = r3_2_1_check_crown_copyright(modified_fortran_lines)
     failure_count = result.failure_count
-    assert failure_count == expected_result
     errors = result.errors
-    assert len(errors) == len(expected_errors)
     for error, lines_list in errors.items():
         assert error in expected_errors
-        assert len(lines_list) == len(expected_errors[error])
         for line_no in lines_list:
             assert line_no in expected_errors[error]
+        assert len(lines_list) == len(expected_errors[error])
+    assert len(errors) == len(expected_errors)
+    assert failure_count == expected_result
 
 
 # =================================================================
@@ -289,14 +289,14 @@ def test_r3_3_2_line_too_long(
     modified_fortran_lines = modify_fortran_lines(example_fortran_lines, changes_list)
     result = r3_3_2_line_too_long(modified_fortran_lines)
     failure_count = result.failure_count
-    assert failure_count == expected_result
     errors = result.errors
-    assert len(errors) == len(expected_errors)
     for error, lines_list in errors.items():
         assert error in expected_errors
-        assert len(lines_list) == len(expected_errors[error])
         for line_no in lines_list:
             assert line_no in expected_errors[error]
+        assert len(lines_list) == len(expected_errors[error])
+    assert len(errors) == len(expected_errors)
+    assert failure_count == expected_result
 
 
 # =================================================================
@@ -382,14 +382,14 @@ def test_r3_4_1_capitalised_keywords(
     modified_fortran_lines = modify_fortran_lines(example_fortran_lines, changes_list)
     result = r3_4_1_capitalised_keywords(modified_fortran_lines)
     failure_count = result.failure_count
-    assert failure_count == expected_result
     errors = result.errors
-    assert len(errors) == len(expected_errors)
     for error, lines_list in errors.items():
         assert error in expected_errors
-        assert len(lines_list) == len(expected_errors[error])
         for line_no in lines_list:
             assert line_no in expected_errors[error]
+        assert len(lines_list) == len(expected_errors[error])
+    assert len(errors) == len(expected_errors)
+    assert failure_count == expected_result
 
 
 # =================================================================
