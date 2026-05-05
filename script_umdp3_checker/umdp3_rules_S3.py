@@ -268,6 +268,8 @@ def r3_3_2_line_too_long(lines: List[str]) -> TestResult:
 """
 * TODO: Never put more than one statement on a line.
 """
+
+
 def r3_3_3_one_statement_per_line(lines: List[str]) -> TestResult:
     """Check for more than one statement on a line, by looking for the presence of a ";" character outside of quoted strings and comments."""
     failures = 0
@@ -281,7 +283,9 @@ def r3_3_3_one_statement_per_line(lines: List[str]) -> TestResult:
         clean_line = remove_comments(clean_line)
         if ";" in clean_line:
             failures += 1
-            error_log = add_error_log(error_log, "multiple statements on one line", count)
+            error_log = add_error_log(
+                error_log, "multiple statements on one line", count
+            )
     return TestResult(
         checker_name="Test 3.3 One Statement Per Line",
         failure_count=failures,
@@ -289,6 +293,8 @@ def r3_3_3_one_statement_per_line(lines: List[str]) -> TestResult:
         output=f"Checked {count + 1} lines, found {failures} failures.",
         errors=error_log,
     )
+
+
 """
 * TODO: Write your program in UK English, unless you have a very good reason for not doing so."""
 
