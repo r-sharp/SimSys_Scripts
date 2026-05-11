@@ -468,6 +468,23 @@ def test_r3_4_1_capitalised_keywords(
             1,
             {'Found UPPERCASE variable name in declaration at line 48: "INPUT2"': [48]},
         ),
+        (
+            [
+                [
+                    "add",
+                    51,
+                    [
+                        "REAL(KIND=real_umphys), INTENT(IN OUT)  ::                      &",
+                        "                        variable(                               &",
+                        " (1-halox):(proc_row_length+halox),                             &",
+                        " (1-haloy):(proc_rows+haloy),                                   &",
+                        "  1:model_levels )                        ! Model variable",
+                    ]
+                ]
+            ],
+            0,
+            {}
+        ),  # Real world false Fail, Thanks Andy M.
         ([], 0, {}),  # No changes, expect no errors
     ],
     ids=[
@@ -476,6 +493,7 @@ def test_r3_4_1_capitalised_keywords(
         "5 UpperCase Var Errors on extended lines",
         "Array dimnensions, twice on an extended line, but no failures",
         "Array dimnensions, twice on an extended line, with one failure",
+        "Weird real world error from Andy M",
         "No UpperCase Var Errors",
     ],
 )
