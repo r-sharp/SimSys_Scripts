@@ -479,11 +479,11 @@ def test_r3_4_1_capitalised_keywords(
                         " (1-halox):(proc_row_length+halox),                             &",
                         " (1-haloy):(proc_rows+haloy),                                   &",
                         "  1:model_levels )                        ! Model variable",
-                    ]
+                    ],
                 ]
             ],
             0,
-            {}
+            {},
         ),  # Real world false Fail, Thanks Andy M.
         ([], 0, {}),  # No changes, expect no errors
     ],
