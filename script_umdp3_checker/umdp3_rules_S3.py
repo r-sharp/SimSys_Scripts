@@ -337,7 +337,7 @@ TODO: This is a very simplistic check and will not detect many
     )
     digit_search = re.compile(r"([+-]?\d+\.\d+|[+-]?\d+)")
     array_dimensions_search = re.compile(
-        r"\([^)]*\)"
+        r"\([^()]*\)"
     )  # finds array dimensions in declaration
     array_assignment_search = re.compile(
         r"=\s*\[[^\]]*\]\s*"
@@ -349,7 +349,8 @@ TODO: This is a very simplistic check and will not detect many
         if declaration_search.search(clean_line):
             full_line = concatenate_lines(lines, count)
             clean_line = full_line.split("::", 1)[1].strip()
-            clean_line = array_dimensions_search.sub("", clean_line).strip()
+            while array_dimensions_search.sub("", clean_line).strip() != clean_line:
+                clean_line = array_dimensions_search.sub("", clean_line).strip()
             clean_line = array_assignment_search.sub("", clean_line)
             variables = [var.strip() for var in clean_line.split(",")]
             for var in variables:
