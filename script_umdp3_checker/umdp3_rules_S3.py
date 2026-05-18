@@ -151,7 +151,7 @@ def r3_1_1_there_can_be_only_one(
                 continue  # Skip empty lines
             unit_name_search = re.search(rf"END\s+{unit_type}\s+(\w+)", executable_line)
             if unit_name_search:
-                if unit_name_search.group(1) == unit_name:
+                if unit_name_search.group(1).upper() == unit_name.upper():
                     return (True, "")
                 else:
                     return (
